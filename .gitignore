@@ -60,6 +60,5 @@ dkms.conf
 Zone.Identifier
 *.dSTM/
 tmp/
-minilibx-linux/
 objs/
 cub3D
