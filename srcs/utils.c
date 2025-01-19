@@ -1,30 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hurabe <hurabe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/05 17:45:40 by hurabe            #+#    #+#             */
-/*   Updated: 2025/01/19 22:19:18 by hurabe           ###   ########.fr       */
+/*   Created: 2025/01/19 22:01:14 by hurabe            #+#    #+#             */
+/*   Updated: 2025/01/19 22:16:03 by hurabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	main(int argc, char **argv)
+void	error_msg(char *message)
 {
-	t_data	data;
-
-	// 入力チェック
-	if (validate(argc, argv))
-		return (EXIT_FAILURE);
-	// 初期化する(ファイルからデータを取得してdataに格納する)
-	// マップの内容を確認する
-	// MLXの初期化、ウィンドウ作成
-	// キー入力設定
-	// ウィンドウ、ボタン設定
-	// ループ処理する
-	mlx_loop(data.graphic.mlx);
-	return (0);
+	if (message)
+	{
+		ft_putstr_fd("Error\n", STDERR_FILENO);
+		ft_putstr_fd(message, STDERR_FILENO);
+		ft_putstr_fd("\n", STDERR_FILENO);
+	}
 }

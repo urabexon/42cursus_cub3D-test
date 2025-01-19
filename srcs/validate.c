@@ -1,30 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   validate.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hurabe <hurabe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/05 17:45:40 by hurabe            #+#    #+#             */
-/*   Updated: 2025/01/19 22:19:18 by hurabe           ###   ########.fr       */
+/*   Created: 2025/01/19 21:45:16 by hurabe            #+#    #+#             */
+/*   Updated: 2025/01/19 22:10:07 by hurabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	main(int argc, char **argv)
+int	validate(int argc, char **argv)
 {
-	t_data	data;
+	char	*extension;
 
-	// 入力チェック
-	if (validate(argc, argv))
+	if (argc != 2)
+	{
+		error_msg("Invalid argument!");
 		return (EXIT_FAILURE);
-	// 初期化する(ファイルからデータを取得してdataに格納する)
-	// マップの内容を確認する
-	// MLXの初期化、ウィンドウ作成
-	// キー入力設定
-	// ウィンドウ、ボタン設定
-	// ループ処理する
-	mlx_loop(data.graphic.mlx);
-	return (0);
+	}
+	extension = ft_strchr(argv[1], '.');
+	if (!extension || ft_strcmp(extension, ".cub"))
+	{
+		error_msg("Invalid map file!");
+		return (EXIT_FAILURE);
+	}
+	return (EXIT_SUCCESS);
 }

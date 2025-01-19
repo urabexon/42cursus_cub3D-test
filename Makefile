@@ -6,35 +6,35 @@
 #    By: hurabe <hurabe@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/05 17:33:31 by hurabe            #+#    #+#              #
-#    Updated: 2025/01/05 17:41:19 by hurabe           ###   ########.fr        #
+#    Updated: 2025/01/19 21:25:34 by hurabe           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = cub3D
-CC = cc
-CFLAGS = -Wall -Wextra -Werror
-LIBX_FLAGS = -L$(MLX_PATH) -lmlx -lXext -lX11 -lm -O3
+NAME		=	cub3D
+CC			=	cc
+CFLAGS		=	-Wall -Wextra -Werror
+LIBX_FLAGS	=	-L$(MLX_PATH) -lmlx -lXext -lX11 -lm -O3
 
-SRC_DIR = srcs
+SRC_DIR		=	srcs
 SRCS = main.c \
-	   check_map.c \
-	   check_player.c \
-	   dda.c \
-	   debug.c \
-	   draw_3d_map.c \
-	   draw_helper.c \
-	   draw_minimap.c \
-	   events.c \
-	   exit.c \
-	   init_map.c \
-	   init_metadata.c \
-	   init_mlx.c \
-	   init.c \
-	   movement.c \
-	   raycast.c \
-	   render.c \
-	   setup.c \
-	   utils.c \
+	#   check_map.c \
+	#   check_player.c \
+	#   dda.c \
+	#   debug.c \
+	#   draw_3d_map.c \
+	#   draw_helper.c \
+	#   draw_minimap.c \
+	#   events.c \
+	#   exit.c \
+	#   init_map.c \
+	#   init_metadata.c \
+	#   init_mlx.c \
+	#   init.c \
+	#   movement.c \
+	#   raycast.c \
+	#   render.c \
+	#   setup.c \
+	#   utils.c \
 	   gnl/get_next_line.c \
 	   gnl/get_next_line_utils.c \
 	   libft/ft_atoi.c \
