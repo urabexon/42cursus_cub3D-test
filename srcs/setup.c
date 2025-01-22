@@ -1,31 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   setup.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hurabe <hurabe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/19 22:01:14 by hurabe            #+#    #+#             */
-/*   Updated: 2025/01/20 22:37:21 by hurabe           ###   ########.fr       */
+/*   Created: 2025/01/20 22:29:40 by hurabe            #+#    #+#             */
+/*   Updated: 2025/01/20 22:29:41 by hurabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
-
-void	error_msg(char *message)
-{
-	if (message)
-	{
-		ft_putstr_fd("Error\n", STDERR_FILENO);
-		ft_putstr_fd(message, STDERR_FILENO);
-		ft_putstr_fd("\n", STDERR_FILENO);
-	}
-}
-
-void	exit_error(char *message, t_data *data)
-{
-	free_data(data);
-	if (message)
-		error_msg(message);
-	exit(EXIT_FAILURE);
-}

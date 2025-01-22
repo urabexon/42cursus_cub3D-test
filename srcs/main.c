@@ -6,7 +6,7 @@
 /*   By: hurabe <hurabe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 17:45:40 by hurabe            #+#    #+#             */
-/*   Updated: 2025/01/19 22:19:18 by hurabe           ###   ########.fr       */
+/*   Updated: 2025/01/20 22:14:28 by hurabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ int	main(int argc, char **argv)
 	if (validate(argc, argv))
 		return (EXIT_FAILURE);
 	// 初期化する(ファイルからデータを取得してdataに格納する)
+	init_data(&data, argv[1]);
 	// マップの内容を確認する
 	// MLXの初期化、ウィンドウ作成
 	// キー入力設定

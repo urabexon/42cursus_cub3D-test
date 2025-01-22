@@ -6,7 +6,7 @@
 /*   By: hurabe <hurabe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 17:59:42 by hurabe            #+#    #+#             */
-/*   Updated: 2025/01/19 22:17:52 by hurabe           ###   ########.fr       */
+/*   Updated: 2025/01/22 22:24:50 by hurabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,36 @@
 # include "get_next_line.h"
 # include "libft.h"
 # include <math.h>
+
+// KEYBOARD CODE(仮)
+# define ESC 65307 // ESCキー
+# define W 119     // Wキー
+# define S 115     // Sキー
+# define A 97      // Aキー
+# define D 100     // Dキー
+# define LA 65361  // 矢印キー左
+# define RA 65363  // 矢印キー右
+//# define M 109     // Mキー(ミニマップ表示切替用,やらなければ削除する)
+
+// SIZE
+# define PX 64              // 各タイルのピクセル数
+# define PACE 10            // プレイヤーの移動ペース
+# define TURNANGLE 0.1      // プレイヤーの回転角度
+# define PLYLEN 9           // プレイヤーの描画サイズ
+# define FOV 1.047198       // 視野角（Field of View）60°
+# define HALF_FOV 0.523599  // 視野角の半分 30°
+# define PLANE_DIST 652.719 // 平面の投影距離
+# define WIDTH 680          // ウィンドウ幅
+# define HEIGHT 480         // ウィンドウ高さ
+
+// MATH
+# define PI 3.14159265      // 円周率（ラジアン計算用）
+# define TOLERANCE 0.000001 // 計算誤差の許容値
+# define X 0                // X方向のインデックス
+# define Y 1                // Y方向のインデックス
+
+// flood_fill用　チェック済みの印(使用しなければ削除)
+# define CHECKED 'V'
 
 // direction(方向,壁の向きやプレイヤーの向き)
 enum	e_direction
@@ -112,7 +142,14 @@ typedef struct s_data
 // validate.c
 int		validate(int argc, char **argv);
 
+// init.c
+void	init_data(t_data *data, char filedata);
+
+// setup.c
+
+
 // utils.c
 void	error_msg(char *message);
+void	exit_error(char *message, t_data *data);
 
 #endif
