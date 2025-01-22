@@ -6,12 +6,13 @@
 /*   By: hurabe <hurabe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 22:15:31 by hurabe            #+#    #+#             */
-/*   Updated: 2025/01/22 22:57:14 by hurabe           ###   ########.fr       */
+/*   Updated: 2025/01/22 23:04:24 by hurabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
+// ファイルの内容を再帰的に取得し、配列に格納する関数
 static	void	get_content(t_data *data, int fd, int counter)
 {
 	char	*line;
@@ -41,6 +42,7 @@ static	void	get_content(t_data *data, int fd, int counter)
 		data->file[counter] = line;
 }
 
+// 指定されたファイルを開き、その内容を取得する
 static	void	get_file_contents(t_data *data, char *filedata)
 {
 	int	fd;
@@ -52,6 +54,7 @@ static	void	get_file_contents(t_data *data, char *filedata)
 	close(fd);
 }
 
+// 取得したファイルの内容をt_dataにセットする関数
 void	set_data_from_file(t_data *data, char **file)
 {
 	int	i;
@@ -80,6 +83,7 @@ void	set_data_from_file(t_data *data, char **file)
 	set_map(data, file);
 }
 
+// 初期化処理を行う関数
 void	init_data(t_data *data, char *filedata)
 {
 	// データに初期値をセットする
