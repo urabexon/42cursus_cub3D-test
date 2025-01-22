@@ -6,7 +6,7 @@
 /*   By: hurabe <hurabe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 17:59:42 by hurabe            #+#    #+#             */
-/*   Updated: 2025/01/22 22:24:50 by hurabe           ###   ########.fr       */
+/*   Updated: 2025/01/22 22:48:15 by hurabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@
 # define RA 65363  // 矢印キー右
 //# define M 109     // Mキー(ミニマップ表示切替用,やらなければ削除する)
 
-// SIZE
+// SIZE(仮)
 # define PX 64              // 各タイルのピクセル数
 # define PACE 10            // プレイヤーの移動ペース
 # define TURNANGLE 0.1      // プレイヤーの回転角度
@@ -100,7 +100,7 @@ typedef struct s_image
 {
 	void	*img;
 	char	*addr;
-	int		bits_per_pixed;
+	int		bits_per_pixel;
 	int		line_size;
 	int		endian;
 }			t_image;
@@ -125,7 +125,7 @@ typedef struct s_window
 typedef struct s_data
 {
 	char		**file;             //.cubファイルの中身
-	char		**texture_paths[5]; // テクスチャファイルパス 5つ目はNULL
+	char		*texture_paths[5];  // テクスチャファイルパス 5つ目はNULL
 	int			floor_rgb[3];       // 床の色（RGB）
 	int			ceiling_rgb[3];     // 天井の色（RGB）
 	char		**map;              // マップデータ（2D配列）

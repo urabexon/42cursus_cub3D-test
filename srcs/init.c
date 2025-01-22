@@ -6,7 +6,7 @@
 /*   By: hurabe <hurabe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 22:15:31 by hurabe            #+#    #+#             */
-/*   Updated: 2025/01/22 22:30:21 by hurabe           ###   ########.fr       */
+/*   Updated: 2025/01/22 22:57:14 by hurabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,8 +66,9 @@ void	set_data_from_file(t_data *data, char **file)
 	}
 	// 設定情報をdataに取得する
 	set_metadata(data, &file);
-	//while (file && *file && is_str_type(*file, ft_isspace))
-	//	file++;
+	// 不要な行をスキップ
+	while (file && *file && is_str_type(*file, ft_isspace))
+		file++;
 	if (!*file)
 		exit_error("Invalid file!", data);
 	// マップの行数と最大長を取得
@@ -79,7 +80,7 @@ void	set_data_from_file(t_data *data, char **file)
 	set_map(data, file);
 }
 
-void	init_data(t_data *data, char filedata)
+void	init_data(t_data *data, char *filedata)
 {
 	// データに初期値をセットする
 	setup(data);
