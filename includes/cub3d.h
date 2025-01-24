@@ -6,7 +6,7 @@
 /*   By: hurabe <hurabe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 17:59:42 by hurabe            #+#    #+#             */
-/*   Updated: 2025/01/22 22:48:15 by hurabe           ###   ########.fr       */
+/*   Updated: 2025/01/24 18:00:58 by hurabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@
 # define FOV 1.047198       // 視野角（Field of View）60°
 # define HALF_FOV 0.523599  // 視野角の半分 30°
 # define PLANE_DIST 652.719 // 平面の投影距離
-# define WIDTH 680          // ウィンドウ幅
-# define HEIGHT 480         // ウィンドウ高さ
+# define WIDTH 1000         // ウィンドウ幅
+# define HEIGHT 1000        // ウィンドウ高さ
 
 // MATH
 # define PI 3.14159265      // 円周率（ラジアン計算用）
