@@ -6,12 +6,13 @@
 /*   By: hurabe <hurabe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 22:29:40 by hurabe            #+#    #+#             */
-/*   Updated: 2025/01/24 20:51:08 by hurabe           ###   ########.fr       */
+/*   Updated: 2025/01/24 21:55:33 by hurabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
+// マップ情報を初期化
 static void	setup_map_info(t_data *data)
 {
 	data->file = NULL;
@@ -26,14 +27,16 @@ static void	setup_map_info(t_data *data)
 	data->columns = 0;
 	data->rays = NULL;
 	data->show_minimap = false;
-	data->minimap_scale = 0;
+	data->minimap_scale = 0; // 初期値を1に変えてもいいかも
 }
 
+// テクスチャ情報を初期化
 static void	setup_texture(t_data *data)
 {
 	int	i;
 
 	i = 0;
+	// 使用するテクスチャ数(NORTH, SOUTH, WEST, EAST, NONE)
 	while (i < 5)
 	{
 		data->texture_paths[i] = NULL;
@@ -48,6 +51,7 @@ static void	setup_texture(t_data *data)
 	}
 }
 
+// プレイヤー情報を初期化
 static void	setup_player(t_player *player)
 {
 	player->position.x = 0;
@@ -59,6 +63,7 @@ static void	setup_player(t_player *player)
 	player->angle = 0;
 }
 
+// MinilibXのグラフィックを初期化
 static void	setup_graphic(t_window *graphic)
 {
 	graphic->mlx = NULL;
@@ -70,6 +75,7 @@ static void	setup_graphic(t_window *graphic)
 	graphic->image.line_size = 0;
 }
 
+// 全体の初期化
 void	setup(t_data *data)
 {
 	setup_map_info(data);
