@@ -6,7 +6,7 @@
 /*   By: hurabe <hurabe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 17:59:42 by hurabe            #+#    #+#             */
-/*   Updated: 2025/01/24 18:00:58 by hurabe           ###   ########.fr       */
+/*   Updated: 2025/01/25 19:21:52 by hurabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,10 +146,15 @@ int		validate(int argc, char **argv);
 void	init_data(t_data *data, char filedata);
 
 // setup.c
+void	set_data_from_file(t_data *data, char **file);
+void	setup(t_data *data);
 
-
-// utils.c
+// exit.c
 void	error_msg(char *message);
 void	exit_error(char *message, t_data *data);
+void	exit_game(t_data *data);
+
+// utils.c
+void	replace_str(char *str, char *remove, char replace);
 
 #endif
