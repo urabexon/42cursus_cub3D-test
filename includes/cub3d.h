@@ -6,7 +6,7 @@
 /*   By: hurabe <hurabe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 17:59:42 by hurabe            #+#    #+#             */
-/*   Updated: 2025/01/29 19:12:02 by hurabe           ###   ########.fr       */
+/*   Updated: 2025/01/29 22:41:57 by hurabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -156,6 +156,7 @@ void	set_metadata(t_data	*data, char ***file);
 void	check_map(t_data *data);
 
 // check_player.c
+void	set_player_info(t_data *data, int y, int x, char **map);
 void	check_player(t_data *data, char **map);
 
 // exit.c
