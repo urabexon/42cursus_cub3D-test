@@ -6,7 +6,7 @@
 /*   By: hurabe <hurabe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 22:15:31 by hurabe            #+#    #+#             */
-/*   Updated: 2025/01/22 23:04:24 by hurabe           ###   ########.fr       */
+/*   Updated: 2025/01/30 20:19:43 by hurabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,8 @@ void	set_data_from_file(t_data *data, char **file)
 	i = 0;
 	while (file[i])
 	{
-		replase_str(file[i], "\f\r\t\v", ' ');
-		replase_str(file[i], "\n", '\0');
+		replace_str(file[i], "\f\r\t\v", ' ');
+		replace_str(file[i], "\n", '\0');
 		i++;
 	}
 	// 設定情報をdataに取得する

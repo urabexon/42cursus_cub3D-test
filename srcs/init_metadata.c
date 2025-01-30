@@ -6,7 +6,7 @@
 /*   By: hurabe <hurabe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/25 19:31:13 by hurabe            #+#    #+#             */
-/*   Updated: 2025/01/25 22:56:22 by hurabe           ###   ########.fr       */
+/*   Updated: 2025/01/30 21:01:20 by hurabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ static int	handle_metadata(t_data *data, char **splited)
 	else if (!ft_strcmp(splited[0], "WE"))
 		return (set_texture_path(data, WEST, splited[1]));
 	else if (!ft_strcmp(splited[0], "EA"))
-		return (set_texture_path(data, EAST, splited[1])));
+		return (set_texture_path(data, EAST, splited[1]));
 	// 天井、床の行ならRGBを確認する
 	else if (!ft_strcmp(splited[0], "C"))
 		return (set_rgb(data->ceiling_rgb, splited[1]));

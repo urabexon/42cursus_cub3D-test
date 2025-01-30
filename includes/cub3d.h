@@ -6,7 +6,7 @@
 /*   By: hurabe <hurabe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 17:59:42 by hurabe            #+#    #+#             */
-/*   Updated: 2025/01/29 22:41:57 by hurabe           ###   ########.fr       */
+/*   Updated: 2025/01/30 21:28:02 by hurabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,7 +143,7 @@ typedef struct s_data
 int		validate(int argc, char **argv);
 
 // init.c
-void	init_data(t_data *data, char filedata);
+void	init_data(t_data *data, char *filedata);
 
 // setup.c
 void	set_data_from_file(t_data *data, char **file);
@@ -151,6 +151,11 @@ void	setup(t_data *data);
 
 // init_metadata.c
 void	set_metadata(t_data	*data, char ***file);
+
+// init_map.c
+int		get_map_columns(char **file);
+int		get_map_rows(char **file);
+void	set_map(t_data *data, char **file);
 
 // check_map.c
 void	check_map(t_data *data);

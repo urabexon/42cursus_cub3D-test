@@ -3,20 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hurabe <hurabe@student.42tokyo.jp>         +#+  +:+       +#+        */
+/*   By: hurabe <hurabe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 13:06:22 by hurabe            #+#    #+#             */
-/*   Updated: 2024/05/21 22:01:37 by hurabe           ###   ########.fr       */
+/*   Updated: 2025/01/30 21:06:09 by hurabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-static bool	ft_isspace(int c)
-{
-	return (c == ' ' || c == '\t' || \
-	c == '\n' || c == '\r' || c == '\f' || c == '\v');
-}
 
 static long	ft_handle_overflow(char *str, int sign)
 {
