@@ -6,7 +6,7 @@
 /*   By: kitaoryoma <kitaoryoma@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 17:59:42 by hurabe            #+#    #+#             */
-/*   Updated: 2025/02/17 10:45:28 by kitaoryoma       ###   ########.fr       */
+/*   Updated: 2025/02/17 14:51:37 by kitaoryoma       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,14 +49,14 @@
 # define CHECKED 'V'
 
 // direction(方向,壁の向きやプレイヤーの向き)
-enum	e_direction
+typedef enum	e_direction
 {
 	NORTH,
 	SOUTH,
 	WEST,
 	EAST,
 	NONE
-};
+}			t_direction;
 
 // player_vector(プレイヤーやレイの位置、方向を保持する用のベクトル)
 typedef struct s_vector
