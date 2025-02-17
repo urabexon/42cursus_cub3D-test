@@ -6,7 +6,7 @@
 /*   By: kitaoryoma <kitaoryoma@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 17:45:40 by hurabe            #+#    #+#             */
-/*   Updated: 2025/02/17 15:18:02 by kitaoryoma       ###   ########.fr       */
+/*   Updated: 2025/02/17 15:24:33 by kitaoryoma       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@ int	main(int argc, char **argv)
 {
 	t_data	data;
 
+	PRINTF("DEBUG MODE\n");
 	// 入力チェック
 	if (validate(argc, argv))
 		return (EXIT_FAILURE);

@@ -6,13 +6,18 @@
 #    By: kitaoryoma <kitaoryoma@student.42.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/05 17:33:31 by hurabe            #+#    #+#              #
-#    Updated: 2025/02/17 15:16:23 by kitaoryoma       ###   ########.fr        #
+#    Updated: 2025/02/17 15:36:28 by kitaoryoma       ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		=	cub3D
 CC			=	cc
 CFLAGS		=	-Wall -Wextra -Werror
+
+ifdef DEBUG
+	CFLAGS += -D DEBUG
+endif
+
 LIBX_FLAGS	=	-L$(MLX_PATH) -lmlx -lXext -lX11 -lm -O3
 
 SRC_DIR		=	srcs
@@ -78,6 +83,9 @@ $(MLX):
 	@git submodule init
 	@git submodule update
 	$(MAKE) -C $(MLX_PATH)
+
+debug: fclean
+	make DEBUG=1
 
 clean:
 	@echo "$(GREEN)Removing object files...$(END)"

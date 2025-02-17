@@ -6,7 +6,7 @@
 /*   By: kitaoryoma <kitaoryoma@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 17:59:42 by hurabe            #+#    #+#             */
-/*   Updated: 2025/02/17 15:18:14 by kitaoryoma       ###   ########.fr       */
+/*   Updated: 2025/02/17 15:23:00 by kitaoryoma       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,13 @@
 
 // flood_fill用　チェック済みの印(使用しなければ削除)
 # define CHECKED 'V'
+
+// デバッグ用printf
+#ifdef DEBUG
+# define PRINTF(fmt, ...) printf(fmt, ##__VA_ARGS__)
+#else
+# define PRINTF(fmt, ...)
+#endif
 
 // direction(方向,壁の向きやプレイヤーの向き)
 typedef enum	e_direction
