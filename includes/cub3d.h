@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hurabe <hurabe@student.42.fr>              +#+  +:+       +#+        */
+/*   By: kitaoryoma <kitaoryoma@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 17:59:42 by hurabe            #+#    #+#             */
-/*   Updated: 2025/01/30 21:28:02 by hurabe           ###   ########.fr       */
+/*   Updated: 2025/02/17 10:45:28 by kitaoryoma       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -175,5 +175,9 @@ bool	is_include_char(char *s, int c);
 void	replace_str(char *str, char *remove, char replace);
 int		strarr_size(char **arr);
 bool	is_str_type(char *str, int (*function)(int));
+
+// ft_mlx_init.c
+void	ft_mlx_init(t_data *data);
+
 
 #endif

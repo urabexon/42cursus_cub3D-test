@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: hurabe <hurabe@student.42.fr>              +#+  +:+       +#+         #
+#    By: kitaoryoma <kitaoryoma@student.42.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/05 17:33:31 by hurabe            #+#    #+#              #
-#    Updated: 2025/01/30 21:29:34 by hurabe           ###   ########.fr        #
+#    Updated: 2025/02/17 10:43:53 by kitaoryoma       ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,6 +26,7 @@ SRCS 		=	main.c \
 				check_player.c \
 				exit.c \
 				utils.c \
+				ft_mlx_init.c \
 				get_next_line/get_next_line.c \
 				get_next_line/get_next_line_utils.c \
 				libft/ft_atoi.c \

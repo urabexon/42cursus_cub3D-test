@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hurabe <hurabe@student.42.fr>              +#+  +:+       +#+        */
+/*   By: kitaoryoma <kitaoryoma@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 17:45:40 by hurabe            #+#    #+#             */
-/*   Updated: 2025/01/24 19:26:04 by hurabe           ###   ########.fr       */
+/*   Updated: 2025/02/17 11:20:20 by kitaoryoma       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,13 @@ int	main(int argc, char **argv)
 	init_data(&data, argv[1]);
 	// マップの内容を確認する
 	check_map(&data);
-	// MLXの初期化、ウィンドウ作成
+	// mlxの初期化
+	ft_mlx_init(&data);
+	// imageを描画
+	mlx_put_image_to_window(data.graphic.mlx, data.graphic.win, data.graphic.image.img, 0, 0);
 	// キー入力設定
 	// ウィンドウ、ボタン設定
 	// ループ処理する
-	mlx_loop(data.graphic.mlx);
+	sleep(5);
 	return (0);
 }
