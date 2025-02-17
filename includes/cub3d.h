@@ -6,7 +6,7 @@
 /*   By: kitaoryoma <kitaoryoma@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 17:59:42 by hurabe            #+#    #+#             */
-/*   Updated: 2025/02/17 15:15:13 by kitaoryoma       ###   ########.fr       */
+/*   Updated: 2025/02/17 15:18:14 by kitaoryoma       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ typedef struct s_player
 // raycasting(レイのデータ、壁衝突位置、角度、テクスチャの座標)
 typedef struct s_ray
 {
-	t_vector	vst;            // 現在のY座標
+	t_vector	vct;            // 現在の座標
 	t_vector	next_grid;      // 次のグリッドラインまでの距離
 	t_vector	direction;      // レイの進行方向(ベクトル)
 	double		angle;          // レイの角度(ラジアン)
