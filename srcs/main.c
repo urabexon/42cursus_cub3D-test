@@ -6,12 +6,11 @@
 /*   By: kitaoryoma <kitaoryoma@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 17:45:40 by hurabe            #+#    #+#             */
-/*   Updated: 2025/02/17 11:23:02 by kitaoryoma       ###   ########.fr       */
+/*   Updated: 2025/02/17 15:16:01 by kitaoryoma       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
 int	main(int argc, char **argv)
 {
 	t_data	data;
@@ -23,9 +22,11 @@ int	main(int argc, char **argv)
 	init_data(&data, argv[1]);
 	// マップの内容を確認する
 	check_map(&data);
-	// mlxの初期化と床、天井の色を描画
+	// mlxの初期化と床
 	ft_mlx_init(&data);
-	// imageを描画
+	// 天井と床の色を描画
+	ft_put_floor_and_ceiling(&data);
+	// imageを表示
 	mlx_put_image_to_window(data.graphic.mlx, data.graphic.win, data.graphic.image.img, 0, 0);
 	// キー入力設定
 	// ウィンドウ、ボタン設定

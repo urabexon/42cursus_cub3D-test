@@ -6,7 +6,7 @@
 /*   By: kitaoryoma <kitaoryoma@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 17:59:42 by hurabe            #+#    #+#             */
-/*   Updated: 2025/02/17 14:51:37 by kitaoryoma       ###   ########.fr       */
+/*   Updated: 2025/02/17 15:15:13 by kitaoryoma       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -179,5 +179,7 @@ bool	is_str_type(char *str, int (*function)(int));
 // ft_mlx_init.c
 void	ft_mlx_init(t_data *data);
 
+// ft_put_color.c
+void	ft_put_floor_and_ceiling(t_data *data);
 
 #endif
