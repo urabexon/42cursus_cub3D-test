@@ -6,7 +6,7 @@
 #    By: kitaoryoma <kitaoryoma@student.42.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/05 17:33:31 by hurabe            #+#    #+#              #
-#    Updated: 2025/02/18 12:11:50 by kitaoryoma       ###   ########.fr        #
+#    Updated: 2025/02/18 17:14:42 by kitaoryoma       ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -64,7 +64,7 @@ INCS		=	-I includes -I$(MLX_PATH)
 GREEN 		=	\033[38;5;082;1m
 END			=	\033[0m
 
-.PHONY: all clean fclean re
+.PHONY: all debug clean fclean re
 
 all: $(MLX) $(NAME)
 
