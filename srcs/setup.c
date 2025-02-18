@@ -6,7 +6,7 @@
 /*   By: kitaoryoma <kitaoryoma@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 22:29:40 by hurabe            #+#    #+#             */
-/*   Updated: 2025/02/18 20:02:26 by kitaoryoma       ###   ########.fr       */
+/*   Updated: 2025/02/18 22:32:28 by kitaoryoma       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static void	setup_map_info(t_data *data)
 	data->columns = 0;
 	data->rays = NULL;
 	data->show_minimap = false;
-	data->minimap_scale = 0; // 初期値を1に変えてもいいかも
+	data->minimap_scale = 4;
 }
 
 // テクスチャ情報を初期化

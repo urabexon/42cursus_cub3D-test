@@ -6,7 +6,7 @@
 /*   By: kitaoryoma <kitaoryoma@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 19:37:47 by kitaoryoma        #+#    #+#             */
-/*   Updated: 2025/02/18 22:29:38 by kitaoryoma       ###   ########.fr       */
+/*   Updated: 2025/02/18 22:31:47 by kitaoryoma       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ void	ft_draw_minimap(t_data *data)
 		y = -MINIMAP_SIZE / 2;
 		while (y < MINIMAP_SIZE / 2)
 		{
-			pos.x = data->player.position.x + (data->player.direction.x * y + data->player.direction.y * x) * 4;
-			pos.y = data->player.position.y + (data->player.direction.y * y - data->player.direction.x * x) * 4;
+			pos.x = data->player.position.x + (data->player.direction.x * y + data->player.direction.y * x) * data->minimap_scale;
+			pos.y = data->player.position.y + (data->player.direction.y * y - data->player.direction.x * x) * data->minimap_scale;
 			if ((int)pos.y / PX < 0 || (int)pos.y / PX >= data->rows
 				|| (int)pos.x / PX < 0 || (int)pos.x / PX >= data->columns)
 				color = 0x101010;//マップ範囲外（黒色）

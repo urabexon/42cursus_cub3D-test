@@ -6,7 +6,7 @@
 /*   By: kitaoryoma <kitaoryoma@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 17:59:42 by hurabe            #+#    #+#             */
-/*   Updated: 2025/02/18 20:03:59 by kitaoryoma       ###   ########.fr       */
+/*   Updated: 2025/02/18 22:31:19 by kitaoryoma       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -162,7 +162,7 @@ typedef struct s_data
 	t_texture	textures[5];		// mlx関連（テクスチャ）
 	t_ray		*rays;              // mlx関連（レイキャスティング）
 	bool		show_minimap;       // ミニマップ表示フラグ
-	int			minimap_scale;      // ミニマップのスケール
+	double		minimap_scale;      // ミニマップのスケール（大きいほど広い範囲を表示）
 }				t_data;
 
 // validate.c
