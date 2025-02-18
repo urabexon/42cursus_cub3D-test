@@ -16,10 +16,9 @@ void	ft_raycasting(t_data *data)
 {
 	// まずは視点の真ん中のレイだけ計算する
 	int width = 0;
+	data->rays = (t_ray *)malloc(sizeof(t_ray) * WIDTH);
 	while (width < WIDTH)
 	{
-
-		data->rays = (t_ray *)malloc(sizeof(t_ray) * WIDTH);
 		// レイキャスティングのデータの初期化
 		data->rays[width].vct.x = data->player.position.x / PX;
 		data->rays[width].vct.y = data->player.position.y / PX;
