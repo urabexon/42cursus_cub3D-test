@@ -6,7 +6,7 @@
 /*   By: kitaoryoma <kitaoryoma@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 11:05:19 by kitaoryoma        #+#    #+#             */
-/*   Updated: 2025/02/18 18:30:53 by kitaoryoma       ###   ########.fr       */
+/*   Updated: 2025/02/18 18:40:17 by kitaoryoma       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -159,4 +159,5 @@ void	ft_draw_wall(t_data *data)
 		ft_draw_line_of_wall(data, ray, width);
 		width++;
 	}
+	free(data->rays);
 }
