@@ -6,7 +6,7 @@
 #    By: kitaoryoma <kitaoryoma@student.42.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/05 17:33:31 by hurabe            #+#    #+#              #
-#    Updated: 2025/02/18 17:27:16 by kitaoryoma       ###   ########.fr        #
+#    Updated: 2025/02/18 19:54:04 by kitaoryoma       ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,6 +35,7 @@ SRCS 		=	main.c \
 				ft_put_color.c \
 				raycasting.c \
 				key_hook.c \
+				minimap.c \
 				get_next_line/get_next_line.c \
 				get_next_line/get_next_line_utils.c \
 				libft/ft_atoi.c \

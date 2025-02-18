@@ -6,7 +6,7 @@
 /*   By: kitaoryoma <kitaoryoma@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 10:13:37 by kitaoryoma        #+#    #+#             */
-/*   Updated: 2025/02/17 15:15:22 by kitaoryoma       ###   ########.fr       */
+/*   Updated: 2025/02/18 19:49:20 by kitaoryoma       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,12 @@ void	ft_mlx_init(t_data *data)
 	data->graphic.image.addr = mlx_get_data_addr(data->graphic.image.img,
 			&data->graphic.image.bits_per_pixel, &data->graphic.image.line_size,
 			&data->graphic.image.endian);
+	data->graphic.minimap_img.img = mlx_new_image(data->graphic.mlx,
+			MINIMAP_SIZE, MINIMAP_SIZE);
+	data->graphic.minimap_img.addr = mlx_get_data_addr(data->graphic.minimap_img.img,
+			&data->graphic.minimap_img.bits_per_pixel,
+			&data->graphic.minimap_img.line_size,
+			&data->graphic.minimap_img.endian);
 	// テクスチャの読み出し
 	t_direction dir = NORTH;
 	while (dir < NONE)

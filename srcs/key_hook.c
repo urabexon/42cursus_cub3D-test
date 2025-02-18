@@ -6,7 +6,7 @@
 /*   By: kitaoryoma <kitaoryoma@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 17:25:12 by kitaoryoma        #+#    #+#             */
-/*   Updated: 2025/02/18 19:22:49 by kitaoryoma       ###   ########.fr       */
+/*   Updated: 2025/02/18 20:16:37 by kitaoryoma       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,5 +64,7 @@ int	key_hook(int keycode, t_data *data)
 	ft_put_floor_and_ceiling(data);
 	ft_draw_wall(data);
 	mlx_put_image_to_window(data->graphic.mlx, data->graphic.win, data->graphic.image.img, 0, 0);
+	ft_draw_minimap(data);
+	mlx_put_image_to_window(data->graphic.mlx, data->graphic.win, data->graphic.minimap_img.img, 0, 0);
 	return (0);
 }

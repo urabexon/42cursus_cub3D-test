@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   setup.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hurabe <hurabe@student.42.fr>              +#+  +:+       +#+        */
+/*   By: kitaoryoma <kitaoryoma@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 22:29:40 by hurabe            #+#    #+#             */
-/*   Updated: 2025/01/24 21:55:33 by hurabe           ###   ########.fr       */
+/*   Updated: 2025/02/18 20:02:26 by kitaoryoma       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,11 @@ static void	setup_graphic(t_window *graphic)
 	graphic->image.bits_per_pixel = 0;
 	graphic->image.endian = 0;
 	graphic->image.line_size = 0;
+	graphic->minimap_img.img = NULL;
+	graphic->minimap_img.addr = NULL;
+	graphic->minimap_img.bits_per_pixel = 0;
+	graphic->minimap_img.endian = 0;
+	graphic->minimap_img.line_size = 0;
 }
 
 // 全体の初期化

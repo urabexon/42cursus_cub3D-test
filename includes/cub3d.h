@@ -6,7 +6,7 @@
 /*   By: kitaoryoma <kitaoryoma@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 17:59:42 by hurabe            #+#    #+#             */
-/*   Updated: 2025/02/18 17:27:02 by kitaoryoma       ###   ########.fr       */
+/*   Updated: 2025/02/18 20:03:59 by kitaoryoma       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@
 # define PLANE_DIST 652.719 // 平面の投影距離
 # define WIDTH 1000         // ウィンドウ幅
 # define HEIGHT 1000        // ウィンドウ高さ
+# define MINIMAP_SIZE 100   // ミニマップのサイズ
 
 // MATH
 # define PI 3.14159265      // 円周率（ラジアン計算用）
@@ -141,6 +142,7 @@ typedef struct s_texture
 typedef struct s_window
 {
 	t_image		image;
+	t_image		minimap_img;
 	void		*mlx;
 	void		*win;
 }				t_window;
@@ -211,5 +213,8 @@ void	ft_draw_wall(t_data *data);
 
 // key_hook.c
 int		key_hook(int keycode, t_data *data);
+
+// minimap.c
+void	ft_draw_minimap(t_data *data);
 
 #endif
