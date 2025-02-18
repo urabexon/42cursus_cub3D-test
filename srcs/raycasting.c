@@ -6,17 +6,14 @@
 /*   By: kitaoryoma <kitaoryoma@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 11:05:19 by kitaoryoma        #+#    #+#             */
-/*   Updated: 2025/02/18 14:48:22 by kitaoryoma       ###   ########.fr       */
+/*   Updated: 2025/02/18 14:51:06 by kitaoryoma       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static void ft_raycasting_init(t_data *data, int width)
+static void ft_raycasting_init(t_data *data, t_ray *ray, int width)
 {
-	t_ray	*ray;
-
-	ray = &(data->rays[width]);
 	// レイキャスティングのデータの初期化
 	ray->vct.x = data->player.position.x / PX;
 	ray->vct.y = data->player.position.y / PX;
@@ -51,12 +48,13 @@ static void ft_raycasting_init(t_data *data, int width)
 
 void	ft_raycasting(t_data *data)
 {
-	// まずは視点の真ん中のレイだけ計算する
+	t_ray *ray;
 	int width = 0;
 	data->rays = (t_ray *)malloc(sizeof(t_ray) * WIDTH);
 	while (width < WIDTH)
 	{
-		ft_raycasting_init(data, width);
+		ray = &data->rays[width];
+		ft_raycasting_init(data, ray, width);
 		PRINTF("start\n");
 		PRINTF("vct.x: %d, vct.y: %d\n", data->rays[width].vct.x, data->rays[width].vct.y);
 		PRINTF("direction.x: %f, direction.y: %f\n", data->rays[width].direction.x, data->rays[width].direction.y);
