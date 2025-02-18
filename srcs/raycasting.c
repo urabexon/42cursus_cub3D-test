@@ -77,7 +77,7 @@ static void	ft_raycasting(t_data *data, t_ray *ray)
 			ray->hit_wall = 0;
 		}
 		// 壁があるか確認
-		if (data->map[data->rows - ray->vct.y][ray->vct.x] == '1')
+		if (data->map[data->rows - ray->vct.y - 1][ray->vct.x] == '1')
 			break ;
 	}
 }
