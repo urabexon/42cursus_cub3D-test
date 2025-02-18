@@ -6,7 +6,7 @@
 /*   By: kitaoryoma <kitaoryoma@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 17:59:42 by hurabe            #+#    #+#             */
-/*   Updated: 2025/02/18 14:57:39 by kitaoryoma       ###   ########.fr       */
+/*   Updated: 2025/02/18 17:21:01 by kitaoryoma       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,19 @@
 #else
 # define PRINTF(fmt, ...)
 #endif
+
+// minilibx-linuxのイベント
+enum				e_event
+{
+	ON_KEYDOWN = 2,
+	ON_KEYUP = 3,
+	ON_MOUSEDOWN = 4,
+	ON_MOUSEUP = 5,
+	ON_MOUSEMOVE = 6,
+	ON_EXPOSE = 12,
+	ON_DESTROY = 17
+};
+
 
 // direction(方向,壁の向きやプレイヤーの向き)
 typedef enum	e_direction
@@ -178,7 +191,7 @@ void	check_player(t_data *data, char **map);
 // exit.c
 void	error_msg(char *message);
 void	exit_error(char *message, t_data *data);
-void	exit_game(t_data *data);
+int		exit_game(t_data *data);
 
 // utils.c
 void	free_all(char **arr);

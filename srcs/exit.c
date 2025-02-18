@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hurabe <hurabe@student.42.fr>              +#+  +:+       +#+        */
+/*   By: kitaoryoma <kitaoryoma@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/25 17:49:10 by hurabe            #+#    #+#             */
-/*   Updated: 2025/01/30 21:25:41 by hurabe           ###   ########.fr       */
+/*   Updated: 2025/02/18 17:20:48 by kitaoryoma       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,10 +65,11 @@ void	exit_error(char *message, t_data *data)
 }
 
 // ゲームの正常終了用
-void	exit_game(t_data *data)
+int	exit_game(t_data *data)
 {
 	free_data(data);
 	ft_putstr_fd(" THANKS FOR PLAYING! ", STDERR_FILENO);
 	ft_putstr_fd("\n", STDERR_FILENO);
 	exit(EXIT_SUCCESS);
+	return (0);
 }
