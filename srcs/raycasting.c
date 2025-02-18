@@ -6,7 +6,7 @@
 /*   By: kitaoryoma <kitaoryoma@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 11:05:19 by kitaoryoma        #+#    #+#             */
-/*   Updated: 2025/02/18 12:29:10 by kitaoryoma       ###   ########.fr       */
+/*   Updated: 2025/02/18 14:25:54 by kitaoryoma       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,4 +104,28 @@ void	ft_raycasting(t_data *data)
 	PRINTF("wall_dir: %d\n", data->rays[width].wall_dir);
 	PRINTF("wall_hit_point: %f\n", data->rays[width].wall_hit_point);
 	PRINTF("wall_height: %d\n", data->rays[width].wall_height);
+	// 壁の一辺を描画する
+	int i = 0;
+	while (i < data->rays[width].wall_height)
+	{
+		int texture_x;
+		int texture_y;
+		// テクスチャの座標を求める
+		if (data->rays[width].hit_wall)
+		{
+			texture_x = (int)(data->textures[data->rays[width].wall_dir].width * (1 - data->rays[width].wall_hit_point));
+		}
+		else
+		{
+			texture_x = (int)(data->textures[data->rays[width].wall_dir].width * data->rays[width].wall_hit_point);
+		}
+		texture_y = (int)(data->textures[data->rays[width].wall_dir].height * ((double)i / data->rays[width].wall_height));
+		char *src;
+		src = data->textures[data->rays[width].wall_dir].image.addr + (texture_y * data->textures[data->rays[width].wall_dir].image.line_size) + (texture_x * (data->textures[data->rays[width].wall_dir].image.bits_per_pixel / 8));
+		long color = *(unsigned int *)src;
+		*(unsigned int *)(data->graphic.image.addr + (HEIGHT / 2 - data->rays[width].wall_height / 2 + i)
+				* data->graphic.image.line_size + width
+				* (data->graphic.image.bits_per_pixel / 8)) = color;
+		i++;
+	}
 }
