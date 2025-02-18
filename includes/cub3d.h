@@ -6,7 +6,7 @@
 /*   By: kitaoryoma <kitaoryoma@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 17:59:42 by hurabe            #+#    #+#             */
-/*   Updated: 2025/02/18 11:31:32 by kitaoryoma       ###   ########.fr       */
+/*   Updated: 2025/02/18 12:11:39 by kitaoryoma       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,14 +93,14 @@ typedef struct s_player
 // raycasting(レイのデータ、壁衝突位置、角度、テクスチャの座標)
 typedef struct s_ray
 {
-	t_vector	vct;            // 現在の座標
+	t_vct_int	vct;            // 現在の座標（整数）
 	t_vector	next_grid;      // 次のグリッドラインまでの距離
 	t_vector	direction;      // レイの進行方向(ベクトル)
 	double		angle;          // レイの角度(ラジアン)
 	double		distance;       // 壁に当たるまでの距離
 	int			hit_wall;       // 壁の衝突判定フラグ（1: 垂直、0: 水平）1:vertical 2:horizontal
 	int			wall_dir;       // 衝突した壁のテクスチャID(e_direction)
-	double		wall_hit_point; // 1:vertical 2:horizontal 垂直な壁に衝突したかを示すフラグ（1: 垂直、0: 水平）
+	double		wall_hit_point; // テクスチャのどの部分に当たったか(0-1, 左下(0,0)座標)
 	int			wall_height;    // レイの結果として計算された壁の高さ
 }				t_ray;
 
@@ -190,5 +190,9 @@ void	ft_mlx_init(t_data *data);
 
 // ft_put_color.c
 void	ft_put_floor_and_ceiling(t_data *data);
+
+// raycasting.c
+void	ft_raycasting(t_data *data);
+
 
 #endif

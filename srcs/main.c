@@ -6,7 +6,7 @@
 /*   By: kitaoryoma <kitaoryoma@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 17:45:40 by hurabe            #+#    #+#             */
-/*   Updated: 2025/02/18 11:24:19 by kitaoryoma       ###   ########.fr       */
+/*   Updated: 2025/02/18 12:13:32 by kitaoryoma       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ int	main(int argc, char **argv)
 	PRINTF("player angle: %f\n", data.player.angle);
 	// 天井と床の色を描画
 	ft_put_floor_and_ceiling(&data);
+	// 壁を描画
+	ft_raycasting(&data);
 	// imageを表示
 	mlx_put_image_to_window(data.graphic.mlx, data.graphic.win, data.graphic.image.img, 0, 0);
 	// キー入力設定
