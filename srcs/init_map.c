@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hurabe <hurabe@student.42.fr>              +#+  +:+       +#+        */
+/*   By: kitaoryoma <kitaoryoma@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 20:30:13 by hurabe            #+#    #+#             */
-/*   Updated: 2025/01/30 20:56:25 by hurabe           ###   ########.fr       */
+/*   Updated: 2025/02/18 22:26:16 by kitaoryoma       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,11 @@ int	get_map_columns(char **file)
 	columns = 0;
 	while (file && *file)
 	{
-		// より長い行があれば値を更新する(\0文字文を足しておく)
-		if ((int)ft_strlen(*file) + 1 > columns)
-			columns = (int)ft_strlen(*file) + 1;
+		// // より長い行があれば値を更新する(\0文字文を足しておく)
+		// if ((int)ft_strlen(*file) + 1 > columns)
+		// 	columns = (int)ft_strlen(*file) + 1;
+		if ((int)ft_strlen(*file) > columns)
+			columns = (int)ft_strlen(*file);
 		file++;
 	}
 	return (columns);
