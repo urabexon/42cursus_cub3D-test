@@ -6,7 +6,7 @@
 /*   By: kitaoryoma <kitaoryoma@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 11:05:19 by kitaoryoma        #+#    #+#             */
-/*   Updated: 2025/02/18 15:46:06 by kitaoryoma       ###   ########.fr       */
+/*   Updated: 2025/02/18 17:55:23 by kitaoryoma       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,26 +17,26 @@ static void	ft_init_sub(t_data *data, t_ray *ray)
 	if (ray->direction.x > 0)
 	{
 		ray->step.x = 1;
-		ray->next_grid.x = fabs((ceil(data->player.position.x / PX) * PX
+		ray->next_grid.x = fabs(((ray->vct.x + 1) * PX
 				- data->player.position.x) / ray->direction.x);
 	}
 	else
 	{
 		ray->step.x = -1;
 		ray->next_grid.x = fabs((data->player.position.x
-				- floor(data->player.position.x / PX) * PX) / ray->direction.x);
+				- ray->vct.x * PX) / ray->direction.x);
 	}
 	if (ray->direction.y > 0)
 	{
 		ray->step.y = 1;
-		ray->next_grid.y = fabs((ceil(data->player.position.y / PX) * PX
-				- data->player.position.y) / ray->direction.y);
+		ray->next_grid.y = fabs((((ray->vct.y + 1) * PX
+				- data->player.position.y)) / ray->direction.y);
 	}
 	else
 	{
 		ray->step.y = -1;
 		ray->next_grid.y = fabs((data->player.position.y
-				- floor(data->player.position.y / PX) * PX) / ray->direction.y);
+				- ray->vct.y * PX) / ray->direction.y);
 	}
 }
 
@@ -62,7 +62,6 @@ static void	ft_raycasting(t_data *data, t_ray *ray)
 {
 	while (1)
 	{
-		PRINTF("vct.x: %d, vct.y: %d\n", ray->vct.x, ray->vct.y);
 		if (ray->next_grid.x < ray->next_grid.y)
 		{
 			ray->distance = ray->next_grid.x;
@@ -120,10 +119,6 @@ static void	ft_raycasting_result(t_data *data, t_ray *ray)
 		ray->wall_height = HEIGHT / 4 * PX * (data->player.direction.x)
 			/ (ray->distance * ray->direction.x);
 	}
-	PRINTF("hit_wall: %d\n", ray->hit_wall);
-	PRINTF("wall_dir: %d\n", ray->wall_dir);
-	PRINTF("wall_hit_point: %f\n", ray->wall_hit_point);
-	PRINTF("wall_height: %d\n", ray->wall_height);
 }
 
 // 壁の一辺を描画する
@@ -168,14 +163,6 @@ void	ft_draw_wall(t_data *data)
 		ray = &data->rays[width];
 		// レイキャスティングのデータの初期化
 		ft_raycasting_init(data, ray, width);
-		PRINTF("start\n");
-		PRINTF("vct.x: %d, vct.y: %d\n", ray->vct.x, ray->vct.y);
-		PRINTF("direction.x: %f, direction.y: %f\n", ray->direction.x,
-			ray->direction.y);
-		PRINTF("angle: %f\n", ray->angle);
-		PRINTF("next_grid.x: %f, next_grid.y: %f\n", ray->next_grid.x,
-			ray->next_grid.y);
-		PRINTF("delta.x: %f, delta.y: %f\n", ray->delta.x, ray->delta.y);
 		ft_raycasting(data, ray);
 		ft_raycasting_result(data, ray);
 		// 壁の一辺を描画する
