@@ -6,7 +6,7 @@
 /*   By: kitaoryoma <kitaoryoma@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 17:25:12 by kitaoryoma        #+#    #+#             */
-/*   Updated: 2025/02/18 20:16:37 by kitaoryoma       ###   ########.fr       */
+/*   Updated: 2025/02/18 22:37:26 by kitaoryoma       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,8 @@ int	key_hook(int keycode, t_data *data)
 		data->player.angle += TURNANGLE;
 	else if (keycode == RA)
 		data->player.angle -= TURNANGLE;
+	else if (keycode == M)
+		data->show_minimap = !data->show_minimap;
 	if (is_in_wall(data, data->player.position))
 		data->player.position = old_position;
 	// 回転によって向きが変わったのでdirectionを再計算
@@ -64,7 +66,10 @@ int	key_hook(int keycode, t_data *data)
 	ft_put_floor_and_ceiling(data);
 	ft_draw_wall(data);
 	mlx_put_image_to_window(data->graphic.mlx, data->graphic.win, data->graphic.image.img, 0, 0);
-	ft_draw_minimap(data);
-	mlx_put_image_to_window(data->graphic.mlx, data->graphic.win, data->graphic.minimap_img.img, 0, 0);
+	if (data->show_minimap)
+	{	
+		ft_draw_minimap(data);
+		mlx_put_image_to_window(data->graphic.mlx, data->graphic.win, data->graphic.minimap_img.img, 0, 0);
+	}
 	return (0);
 }

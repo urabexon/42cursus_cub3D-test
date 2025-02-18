@@ -6,7 +6,7 @@
 /*   By: kitaoryoma <kitaoryoma@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 22:29:40 by hurabe            #+#    #+#             */
-/*   Updated: 2025/02/18 22:32:28 by kitaoryoma       ###   ########.fr       */
+/*   Updated: 2025/02/18 22:33:31 by kitaoryoma       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static void	setup_map_info(t_data *data)
 	data->rows = 0;
 	data->columns = 0;
 	data->rays = NULL;
-	data->show_minimap = false;
+	data->show_minimap = true;
 	data->minimap_scale = 4;
 }
 
