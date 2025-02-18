@@ -17,26 +17,26 @@ static void	ft_init_sub(t_data *data, t_ray *ray)
 	if (ray->direction.x > 0)
 	{
 		ray->step.x = 1;
-		ray->next_grid.x = (ceil(data->player.position.x / PX) * PX
-				- data->player.position.x) / ray->direction.x;
+		ray->next_grid.x = fabs((ceil(data->player.position.x / PX) * PX
+				- data->player.position.x) / ray->direction.x);
 	}
 	else
 	{
 		ray->step.x = -1;
-		ray->next_grid.x = (data->player.position.x
-				- floor(data->player.position.x / PX) * PX) / ray->direction.x;
+		ray->next_grid.x = fabs((data->player.position.x
+				- floor(data->player.position.x / PX) * PX) / ray->direction.x);
 	}
 	if (ray->direction.y > 0)
 	{
 		ray->step.y = 1;
-		ray->next_grid.y = (ceil(data->player.position.y / PX) * PX
-				- data->player.position.y) / ray->direction.y;
+		ray->next_grid.y = fabs((ceil(data->player.position.y / PX) * PX
+				- data->player.position.y) / ray->direction.y);
 	}
 	else
 	{
 		ray->step.y = -1;
-		ray->next_grid.y = (data->player.position.y
-				- floor(data->player.position.y / PX) * PX) / ray->direction.y;
+		ray->next_grid.y = fabs((data->player.position.y
+				- floor(data->player.position.y / PX) * PX) / ray->direction.y);
 	}
 }
 
