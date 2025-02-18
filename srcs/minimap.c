@@ -6,7 +6,7 @@
 /*   By: kitaoryoma <kitaoryoma@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 19:37:47 by kitaoryoma        #+#    #+#             */
-/*   Updated: 2025/02/18 22:31:47 by kitaoryoma       ###   ########.fr       */
+/*   Updated: 2025/02/18 22:45:55 by kitaoryoma       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,19 @@ void	ft_draw_minimap(t_data *data)
 				color = 0xf0f8ff;//通路（薄い水色）
 			*(unsigned int *)(data->graphic.minimap_img.addr + (MINIMAP_SIZE / 2 - y - 1) * data->graphic.minimap_img.line_size
 				+ (x + MINIMAP_SIZE / 2) * (data->graphic.minimap_img.bits_per_pixel / 8)) = color;
+			y++;
+		}
+		x++;
+	}
+	// 中央にプレイヤーを描画
+	x = MINIMAP_SIZE / 2 - PLYLEN / 2;
+	while (x < MINIMAP_SIZE / 2 + PLYLEN / 2)
+	{
+		y = MINIMAP_SIZE / 2 - PLYLEN / 2;
+		while (y < MINIMAP_SIZE / 2 + PLYLEN / 2)
+		{
+			*(unsigned int *)(data->graphic.minimap_img.addr + y * data->graphic.minimap_img.line_size
+				+ x * (data->graphic.minimap_img.bits_per_pixel / 8)) = 0xff0000;
 			y++;
 		}
 		x++;
