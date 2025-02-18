@@ -6,11 +6,29 @@
 /*   By: kitaoryoma <kitaoryoma@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 17:45:40 by hurabe            #+#    #+#             */
-/*   Updated: 2025/02/18 22:34:05 by kitaoryoma       ###   ########.fr       */
+/*   Updated: 2025/02/18 22:43:20 by kitaoryoma       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+// スクリーンに描画する関数
+void	ft_print_screen(t_data *data)
+{
+	// 天井と床の色を描画
+	ft_put_floor_and_ceiling(data);
+	// 壁を描画
+	ft_draw_wall(data);
+	// imageを表示
+	mlx_put_image_to_window(data->graphic.mlx, data->graphic.win, data->graphic.image.img, 0, 0);
+	// ミニマップを表示
+	if (data->show_minimap)
+	{	
+		ft_draw_minimap(data);
+		mlx_put_image_to_window(data->graphic.mlx, data->graphic.win, data->graphic.minimap_img.img, 0, 0);
+	}
+}
+
 int	main(int argc, char **argv)
 {
 	t_data	data;
@@ -30,18 +48,8 @@ int	main(int argc, char **argv)
 	PRINTF("player array_pos: %d, %d\n", data.player.array_pos.x, data.player.array_pos.y);
 	PRINTF("player direction: %f, %f\n", data.player.direction.x, data.player.direction.y);
 	PRINTF("player angle: %f\n", data.player.angle);
-	// 天井と床の色を描画
-	ft_put_floor_and_ceiling(&data);
-	// 壁を描画
-	ft_draw_wall(&data);
-	// imageを表示
-	mlx_put_image_to_window(data.graphic.mlx, data.graphic.win, data.graphic.image.img, 0, 0);
-	// ミニマップを表示
-	if (data.show_minimap)
-	{	
-		ft_draw_minimap(&data);
-		mlx_put_image_to_window(data.graphic.mlx, data.graphic.win, data.graphic.minimap_img.img, 0, 0);
-	}
+	// スクリーンに描画
+	ft_print_screen(&data);
 	// ウィンドウを閉じた時の処理
 	mlx_hook(data.graphic.win, ON_DESTROY, 0, exit_game, &data);
 	// キー入力設定

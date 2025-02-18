@@ -6,7 +6,7 @@
 /*   By: kitaoryoma <kitaoryoma@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 17:25:12 by kitaoryoma        #+#    #+#             */
-/*   Updated: 2025/02/18 22:37:26 by kitaoryoma       ###   ########.fr       */
+/*   Updated: 2025/02/18 22:42:36 by kitaoryoma       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,13 +63,6 @@ int	key_hook(int keycode, t_data *data)
 	data->player.direction.y = sin(data->player.angle);
 	PRINTF("player position: %f, %f\n", data->player.position.x, data->player.position.y);
 	PRINTF("player direction: %f, %f\n", data->player.direction.x, data->player.direction.y);
-	ft_put_floor_and_ceiling(data);
-	ft_draw_wall(data);
-	mlx_put_image_to_window(data->graphic.mlx, data->graphic.win, data->graphic.image.img, 0, 0);
-	if (data->show_minimap)
-	{	
-		ft_draw_minimap(data);
-		mlx_put_image_to_window(data->graphic.mlx, data->graphic.win, data->graphic.minimap_img.img, 0, 0);
-	}
+	ft_print_screen(data);
 	return (0);
 }

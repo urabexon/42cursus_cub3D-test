@@ -6,7 +6,7 @@
 /*   By: kitaoryoma <kitaoryoma@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 17:59:42 by hurabe            #+#    #+#             */
-/*   Updated: 2025/02/18 22:37:13 by kitaoryoma       ###   ########.fr       */
+/*   Updated: 2025/02/18 22:42:55 by kitaoryoma       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -216,5 +216,8 @@ int		key_hook(int keycode, t_data *data);
 
 // minimap.c
 void	ft_draw_minimap(t_data *data);
+
+// main.c
+void	ft_print_screen(t_data *data);
 
 #endif
