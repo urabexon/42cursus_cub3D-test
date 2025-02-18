@@ -6,7 +6,7 @@
 /*   By: kitaoryoma <kitaoryoma@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 17:59:42 by hurabe            #+#    #+#             */
-/*   Updated: 2025/02/18 22:42:55 by kitaoryoma       ###   ########.fr       */
+/*   Updated: 2025/02/18 22:51:49 by kitaoryoma       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,14 @@ enum				e_event
 	ON_DESTROY = 17
 };
 
+enum				e_mouse_event
+{
+	LEFT_CLICK = 1,
+	RIGHT_CLICK = 2,
+	MIDDLE_CLICK = 3,
+	SCROLL_UP = 4,
+	SCROLL_DOWN = 5
+};
 
 // direction(方向,壁の向きやプレイヤーの向き)
 typedef enum	e_direction
@@ -213,6 +221,9 @@ void	ft_draw_wall(t_data *data);
 
 // key_hook.c
 int		key_hook(int keycode, t_data *data);
+
+// mouse_hook.c
+int		mouse_hook(int event, int x, int y, t_data *data);
 
 // minimap.c
 void	ft_draw_minimap(t_data *data);
