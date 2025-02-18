@@ -6,7 +6,7 @@
 /*   By: kitaoryoma <kitaoryoma@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 11:05:19 by kitaoryoma        #+#    #+#             */
-/*   Updated: 2025/02/18 17:55:23 by kitaoryoma       ###   ########.fr       */
+/*   Updated: 2025/02/18 18:30:53 by kitaoryoma       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,17 +108,7 @@ static void	ft_raycasting_result(t_data *data, t_ray *ray)
 		ray->wall_hit_point = fmod((data->player.position.x + ray->distance
 					* ray->direction.x), PX) / PX;
 	// 壁の高さを求める（あとで綺麗な描画になる値を見つける）
-	// 0に近い値を計算で使わないように、xかyの都合のいいほうで計算する
-	if (fabs(ray->direction.y) > 1 / sqrt(2))
-	{
-		ray->wall_height = HEIGHT / 4 * PX * (data->player.direction.y)
-			/ (ray->distance * ray->direction.y);
-	}
-	else
-	{
-		ray->wall_height = HEIGHT / 4 * PX * (data->player.direction.x)
-			/ (ray->distance * ray->direction.x);
-	}
+	ray->wall_height = HEIGHT / 4 * PX / ray->distance / cos(ray->angle - data->player.angle);
 }
 
 // 壁の一辺を描画する
