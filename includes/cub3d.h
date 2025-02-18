@@ -6,7 +6,7 @@
 /*   By: kitaoryoma <kitaoryoma@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 17:59:42 by hurabe            #+#    #+#             */
-/*   Updated: 2025/02/18 14:42:37 by kitaoryoma       ###   ########.fr       */
+/*   Updated: 2025/02/18 14:57:39 by kitaoryoma       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -194,7 +194,7 @@ void	ft_mlx_init(t_data *data);
 void	ft_put_floor_and_ceiling(t_data *data);
 
 // raycasting.c
-void	ft_raycasting(t_data *data);
+void	ft_draw_wall(t_data *data);
 
 
 #endif
