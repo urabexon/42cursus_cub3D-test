@@ -6,7 +6,7 @@
 /*   By: kitaoryoma <kitaoryoma@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 17:59:42 by hurabe            #+#    #+#             */
-/*   Updated: 2025/02/17 15:23:00 by kitaoryoma       ###   ########.fr       */
+/*   Updated: 2025/02/18 11:31:32 by kitaoryoma       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,11 +79,13 @@ typedef struct s_vct_int
 	int	y;	
 }				t_vct_int;
 
+// playerとraycasting構造体の変数は、計算しやすいように全て左下(0,0)座標にする
+
 // player(プレイヤーの情報)
 typedef struct s_player
 {
 	t_vector	position;  // 現在位置 (x, y座標)
-	t_vct_int	array_pos; // 現在位置 (x, y座標) map配列の探索用にintの値を格納
+	t_vct_int	array_pos; // 初期位置 (x, y座標) map配列の探索用にintの値を格納(左上(0,0)座標)
 	t_vector	direction; // 向きベクトル (x, y座標)
 	double		angle;     // 向きの角度 (ラジアン)
 }				t_player;
