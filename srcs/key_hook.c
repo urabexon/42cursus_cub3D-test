@@ -29,7 +29,7 @@ int	key_hook(int keycode, t_data *data)
 	else if (keycode == A)
 	{
 		data->player.position.x -= PACE * data->player.direction.y;
-		data->player.position.x += PACE * data->player.direction.x;
+		data->player.position.y += PACE * data->player.direction.x;
 	}
 	else if (keycode == D)
 	{
