@@ -6,7 +6,7 @@
 /*   By: kitaoryoma <kitaoryoma@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 11:05:19 by kitaoryoma        #+#    #+#             */
-/*   Updated: 2025/02/18 18:40:17 by kitaoryoma       ###   ########.fr       */
+/*   Updated: 2025/02/18 19:25:23 by kitaoryoma       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,24 +118,34 @@ static void	ft_draw_line_of_wall(t_data *data, t_ray *ray, int width)
 	t_vct_int	texture; // テクスチャ内の描画する座標を求める
 	char		*src;
 	long		color;
+	int			height;
 
 	i = 0;
 	while (i < ray->wall_height)
 	{
+		height = HEIGHT / 2 - ray->wall_height / 2 + i;
+		if (height < 0 || height >= HEIGHT)
+		{
+			i++;
+			continue ;
+		}
 		if (ray->hit_wall)
+		{
 			texture.x = (int)(data->textures[ray->wall_dir].width * (1
 						- ray->wall_hit_point));
+		}
 		else
+		{
 			texture.x = (int)(data->textures[ray->wall_dir].width
 					* ray->wall_hit_point);
+		}
 		texture.y = (int)(data->textures[ray->wall_dir].height * ((double)i
 					/ ray->wall_height));
 		src = data->textures[ray->wall_dir].image.addr + (texture.y
 				* data->textures[ray->wall_dir].image.line_size) + (texture.x
 				* (data->textures[ray->wall_dir].image.bits_per_pixel / 8));
 		color = *(unsigned int *)src;
-		*(unsigned int *)(data->graphic.image.addr + (HEIGHT / 2
-					- ray->wall_height / 2 + i) * data->graphic.image.line_size
+		*(unsigned int *)(data->graphic.image.addr + height * data->graphic.image.line_size
 				+ width * (data->graphic.image.bits_per_pixel / 8)) = color;
 		i++;
 	}
