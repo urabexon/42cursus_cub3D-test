@@ -6,7 +6,7 @@
 /*   By: kitaoryoma <kitaoryoma@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 17:45:40 by hurabe            #+#    #+#             */
-/*   Updated: 2025/02/18 17:22:21 by kitaoryoma       ###   ########.fr       */
+/*   Updated: 2025/02/18 17:24:47 by kitaoryoma       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ int	main(int argc, char **argv)
 	// ウィンドウを閉じた時の処理
 	mlx_hook(data.graphic.win, ON_DESTROY, 0, exit_game, &data);
 	// キー入力設定
+	mlx_key_hook(data.graphic.win, key_hook, &data);
 	// ウィンドウ、ボタン設定
 	// ループ処理する
 	mlx_loop(data.graphic.mlx);

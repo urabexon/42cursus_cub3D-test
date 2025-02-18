@@ -6,7 +6,7 @@
 /*   By: kitaoryoma <kitaoryoma@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 17:59:42 by hurabe            #+#    #+#             */
-/*   Updated: 2025/02/18 17:21:01 by kitaoryoma       ###   ########.fr       */
+/*   Updated: 2025/02/18 17:27:02 by kitaoryoma       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -209,5 +209,7 @@ void	ft_put_floor_and_ceiling(t_data *data);
 // raycasting.c
 void	ft_draw_wall(t_data *data);
 
+// key_hook.c
+int		key_hook(int keycode, t_data *data);
 
 #endif
