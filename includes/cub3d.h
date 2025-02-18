@@ -6,7 +6,7 @@
 /*   By: kitaoryoma <kitaoryoma@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 17:59:42 by hurabe            #+#    #+#             */
-/*   Updated: 2025/02/18 12:11:39 by kitaoryoma       ###   ########.fr       */
+/*   Updated: 2025/02/18 14:42:37 by kitaoryoma       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,8 +94,10 @@ typedef struct s_player
 typedef struct s_ray
 {
 	t_vct_int	vct;            // 現在の座標（整数）
+	t_vct_int	step;           // レイの進行方向(1 or -1)
 	t_vector	next_grid;      // 次のグリッドラインまでの距離
 	t_vector	direction;      // レイの進行方向(ベクトル)
+	t_vector	delta;          // x,y方向に1マス進めた時のレイの長さの変化
 	double		angle;          // レイの角度(ラジアン)
 	double		distance;       // 壁に当たるまでの距離
 	int			hit_wall;       // 壁の衝突判定フラグ（1: 垂直、0: 水平）1:vertical 2:horizontal

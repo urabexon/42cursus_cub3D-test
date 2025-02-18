@@ -6,11 +6,48 @@
 /*   By: kitaoryoma <kitaoryoma@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 11:05:19 by kitaoryoma        #+#    #+#             */
-/*   Updated: 2025/02/18 14:28:02 by kitaoryoma       ###   ########.fr       */
+/*   Updated: 2025/02/18 14:48:22 by kitaoryoma       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+static void ft_raycasting_init(t_data *data, int width)
+{
+	t_ray	*ray;
+
+	ray = &(data->rays[width]);
+	// レイキャスティングのデータの初期化
+	ray->vct.x = data->player.position.x / PX;
+	ray->vct.y = data->player.position.y / PX;
+	double diff = -atan((width - WIDTH / 2) / (WIDTH / 2 * sqrt(3)));
+	ray->angle = data->player.angle + diff;
+	ray->direction.x = cos(ray->angle);
+	ray->direction.y = sin(ray->angle);
+	ray->distance = 0;
+	ray->delta.x = fabs(PX / ray->direction.x);
+	ray->delta.y = fabs(PX / ray->direction.y);
+	if (ray->direction.x > 0)
+	{
+		data->rays[width].step.x = 1;
+		ray->next_grid.x = (ceil(data->player.position.x / PX) * PX - data->player.position.x) / ray->direction.x;
+	}
+	else
+	{
+		data->rays[width].step.x = -1;
+		ray->next_grid.x = (data->player.position.x - floor(data->player.position.x / PX) * PX) / ray->direction.x;
+	}
+	if (ray->direction.y > 0)
+	{
+		data->rays[width].step.y = 1;
+		ray->next_grid.y = (ceil(data->player.position.y / PX) * PX - data->player.position.y) / ray->direction.y;
+	}
+	else
+	{
+		data->rays[width].step.y = -1;
+		ray->next_grid.y = (data->player.position.y - floor(data->player.position.y / PX) * PX) / ray->direction.y;
+	}
+}
 
 void	ft_raycasting(t_data *data)
 {
@@ -19,44 +56,13 @@ void	ft_raycasting(t_data *data)
 	data->rays = (t_ray *)malloc(sizeof(t_ray) * WIDTH);
 	while (width < WIDTH)
 	{
-		// レイキャスティングのデータの初期化
-		data->rays[width].vct.x = data->player.position.x / PX;
-		data->rays[width].vct.y = data->player.position.y / PX;
-		double diff = -atan((width - WIDTH / 2) / (WIDTH / 2 * sqrt(3)));
-		data->rays[width].angle = data->player.angle + diff;
-		data->rays[width].direction.x = cos(data->rays[width].angle);
-		data->rays[width].direction.y = sin(data->rays[width].angle);
-		data->rays[width].distance = 0;
-		// 次にx,y方向に1マス進めた時のレイの長さの変化
-		t_vector delta = {fabs(PX / data->rays[width].direction.x), fabs(PX / data->rays[width].direction.y)};
-		// レイがx,y方向に進む向き(-1or1)
-		t_vct_int step;
-		if (data->rays[width].direction.x > 0)
-		{
-			step.x = 1;
-			data->rays[width].next_grid.x = (ceil(data->player.position.x / PX) * PX - data->player.position.x) / data->rays[width].direction.x;
-		}
-		else
-		{
-			step.x = -1;
-			data->rays[width].next_grid.x = (data->player.position.x - floor(data->player.position.x / PX) * PX) / data->rays[width].direction.x;
-		}
-		if (data->rays[width].direction.y > 0)
-		{
-			step.y = 1;
-			data->rays[width].next_grid.y = (ceil(data->player.position.y / PX) * PX - data->player.position.y) / data->rays[width].direction.y;
-		}
-		else
-		{
-			step.y = -1;
-			data->rays[width].next_grid.y = (data->player.position.y - floor(data->player.position.y / PX) * PX) / data->rays[width].direction.y;
-		}
+		ft_raycasting_init(data, width);
 		PRINTF("start\n");
 		PRINTF("vct.x: %d, vct.y: %d\n", data->rays[width].vct.x, data->rays[width].vct.y);
 		PRINTF("direction.x: %f, direction.y: %f\n", data->rays[width].direction.x, data->rays[width].direction.y);
 		PRINTF("angle: %f\n", data->rays[width].angle);
 		PRINTF("next_grid.x: %f, next_grid.y: %f\n", data->rays[width].next_grid.x, data->rays[width].next_grid.y);
-		PRINTF("delta.x: %f, delta.y: %f\n", delta.x, delta.y);
+		PRINTF("delta.x: %f, delta.y: %f\n", data->rays[width].delta.x, data->rays[width].delta.y);
 		// レイキャスティングの計算
 		while (1)
 		{
@@ -64,15 +70,15 @@ void	ft_raycasting(t_data *data)
 			if (data->rays[width].next_grid.x < data->rays[width].next_grid.y)
 			{
 				data->rays[width].distance = data->rays[width].next_grid.x;
-				data->rays[width].next_grid.x += delta.x;
-				data->rays[width].vct.x += step.x;
+				data->rays[width].next_grid.x += data->rays[width].delta.x;
+				data->rays[width].vct.x += data->rays[width].step.x;
 				data->rays[width].hit_wall = 1;
 			}
 			else
 			{
 				data->rays[width].distance = data->rays[width].next_grid.y;
-				data->rays[width].next_grid.y += delta.y;
-				data->rays[width].vct.y += step.y;
+				data->rays[width].next_grid.y += data->rays[width].delta.y;
+				data->rays[width].vct.y += data->rays[width].step.y;
 				data->rays[width].hit_wall = 0;
 			}
 			// 壁があるか確認
