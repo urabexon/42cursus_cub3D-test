@@ -6,7 +6,7 @@
 /*   By: kitaoryoma <kitaoryoma@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/25 17:49:10 by hurabe            #+#    #+#             */
-/*   Updated: 2025/02/18 17:20:48 by kitaoryoma       ###   ########.fr       */
+/*   Updated: 2025/03/02 23:01:49 by kitaoryoma       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ static void	free_data(t_data *data)
 	// mlx
 	if (data->graphic.image.img)
 		mlx_destroy_image(data->graphic.mlx, data->graphic.image.img);
+	if (data->graphic.minimap_img.img)
+		mlx_destroy_image(data->graphic.mlx, data->graphic.minimap_img.img);
 	if (data->graphic.win)
 		mlx_destroy_window(data->graphic.mlx, data->graphic.win);
 	if (data->graphic.mlx)
