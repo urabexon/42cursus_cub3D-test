@@ -6,20 +6,45 @@
 /*   By: kitaoryoma <kitaoryoma@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 17:25:12 by kitaoryoma        #+#    #+#             */
-/*   Updated: 2025/02/18 22:42:36 by kitaoryoma       ###   ########.fr       */
+/*   Updated: 2025/03/02 22:23:03 by kitaoryoma       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int is_in_wall(t_data *data, t_vector position)
+// 座標が壁の中に入っている、もしくは班以外なら1を返す
+static int is_in_wall(t_data *data, t_vector position)
 {
 	int x;
 	int y;
 
-	x = position.x / PX;
-	y = position.y / PX;
-	if (data->map[data->rows - 1 - y][x] == '1')
+	x = (int)position.x / PX;
+	y = (int)position.y / PX;
+	if (x < 0 || y < 0 || x >= data->columns || y >= data->rows)
+		return (1);
+	if (data->map[data->rows - 1 - y][x] == '1' || data->map[data->rows - 1 - y][x] == ' ')
+		return (1);
+	return (0);
+}
+
+// 壁との距離がPACE以内になったら1を返す
+static int is_near_wall(t_data *data, t_vector position)
+{
+	t_vector pos;
+
+	pos = position;
+	pos.x += PACE;
+	if (is_in_wall(data, pos))
+		return (1);
+	pos.x -= 2 * PACE;
+	if (is_in_wall(data, pos))
+		return (1);
+	pos.x += PACE;
+	pos.y += PACE;
+	if (is_in_wall(data, pos))
+		return (1);
+	pos.y -= 2 * PACE;
+	if (is_in_wall(data, pos))
 		return (1);
 	return (0);
 }
@@ -56,7 +81,7 @@ int	key_hook(int keycode, t_data *data)
 		data->player.angle -= TURNANGLE;
 	else if (keycode == M)
 		data->show_minimap = !data->show_minimap;
-	if (is_in_wall(data, data->player.position))
+	if (is_near_wall(data, data->player.position))
 		data->player.position = old_position;
 	// 回転によって向きが変わったのでdirectionを再計算
 	data->player.direction.x = cos(data->player.angle);
