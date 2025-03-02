@@ -6,7 +6,7 @@
 /*   By: kitaoryoma <kitaoryoma@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 11:05:19 by kitaoryoma        #+#    #+#             */
-/*   Updated: 2025/02/18 19:25:23 by kitaoryoma       ###   ########.fr       */
+/*   Updated: 2025/03/02 23:11:58 by kitaoryoma       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static void	ft_init_sub(t_data *data, t_ray *ray)
 }
 
 // レイキャスティングのデータの初期化
-static void	ft_raycasting_init(t_data *data, t_ray *ray, int width)
+void	ft_raycasting_init(t_data *data, t_ray *ray, int width)
 {
 	double	diff;
 
@@ -58,7 +58,7 @@ static void	ft_raycasting_init(t_data *data, t_ray *ray, int width)
 }
 
 // レイキャスティングを行う
-static void	ft_raycasting(t_data *data, t_ray *ray)
+void	ft_raycasting(t_data *data, t_ray *ray)
 {
 	while (1)
 	{
@@ -83,7 +83,7 @@ static void	ft_raycasting(t_data *data, t_ray *ray)
 }
 
 // レイキャスtェイングの結果をまとめ、壁の描画に必要な情報を求める
-static void	ft_raycasting_result(t_data *data, t_ray *ray)
+void	ft_raycasting_result(t_data *data, t_ray *ray)
 {
 	// 壁のテクスチャ（方向）を求める
 	if (ray->hit_wall)
@@ -109,65 +109,4 @@ static void	ft_raycasting_result(t_data *data, t_ray *ray)
 					* ray->direction.x), PX) / PX;
 	// 壁の高さを求める（あとで綺麗な描画になる値を見つける）
 	ray->wall_height = HEIGHT / 4 * PX / ray->distance / cos(ray->angle - data->player.angle);
-}
-
-// 壁の一辺を描画する
-static void	ft_draw_line_of_wall(t_data *data, t_ray *ray, int width)
-{
-	int			i;
-	t_vct_int	texture; // テクスチャ内の描画する座標を求める
-	char		*src;
-	long		color;
-	int			height;
-
-	i = 0;
-	while (i < ray->wall_height)
-	{
-		height = HEIGHT / 2 - ray->wall_height / 2 + i;
-		if (height < 0 || height >= HEIGHT)
-		{
-			i++;
-			continue ;
-		}
-		if (ray->hit_wall)
-		{
-			texture.x = (int)(data->textures[ray->wall_dir].width * (1
-						- ray->wall_hit_point));
-		}
-		else
-		{
-			texture.x = (int)(data->textures[ray->wall_dir].width
-					* ray->wall_hit_point);
-		}
-		texture.y = (int)(data->textures[ray->wall_dir].height * ((double)i
-					/ ray->wall_height));
-		src = data->textures[ray->wall_dir].image.addr + (texture.y
-				* data->textures[ray->wall_dir].image.line_size) + (texture.x
-				* (data->textures[ray->wall_dir].image.bits_per_pixel / 8));
-		color = *(unsigned int *)src;
-		*(unsigned int *)(data->graphic.image.addr + height * data->graphic.image.line_size
-				+ width * (data->graphic.image.bits_per_pixel / 8)) = color;
-		i++;
-	}
-}
-
-void	ft_draw_wall(t_data *data)
-{
-	t_ray	*ray;
-	int		width;
-
-	width = 0;
-	data->rays = (t_ray *)malloc(sizeof(t_ray) * WIDTH);
-	while (width < WIDTH)
-	{
-		ray = &data->rays[width];
-		// レイキャスティングのデータの初期化
-		ft_raycasting_init(data, ray, width);
-		ft_raycasting(data, ray);
-		ft_raycasting_result(data, ray);
-		// 壁の一辺を描画する
-		ft_draw_line_of_wall(data, ray, width);
-		width++;
-	}
-	free(data->rays);
 }

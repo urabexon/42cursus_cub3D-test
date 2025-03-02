@@ -6,7 +6,7 @@
 #    By: kitaoryoma <kitaoryoma@student.42.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/05 17:33:31 by hurabe            #+#    #+#              #
-#    Updated: 2025/02/18 22:52:02 by kitaoryoma       ###   ########.fr        #
+#    Updated: 2025/03/02 23:12:38 by kitaoryoma       ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,6 +34,7 @@ SRCS 		=	main.c \
 				ft_mlx_init.c \
 				ft_put_color.c \
 				raycasting.c \
+				draw_wall.c \
 				key_hook.c \
 				mouse_hook.c \
 				minimap.c \
