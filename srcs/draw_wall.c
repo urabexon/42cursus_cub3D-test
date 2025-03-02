@@ -6,20 +6,46 @@
 /*   By: kitaoryoma <kitaoryoma@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/02 23:10:28 by kitaoryoma        #+#    #+#             */
-/*   Updated: 2025/03/02 23:11:11 by kitaoryoma       ###   ########.fr       */
+/*   Updated: 2025/03/02 23:36:35 by kitaoryoma       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-// 壁の一辺を描画する
-static void	ft_draw_line_of_wall(t_data *data, t_ray *ray, int width)
+static void	ft_draw_line_of_wall_sub(t_data *data, t_ray *ray, int width, int i)
 {
-	int			i;
-	t_vct_int	texture; // テクスチャ内の描画する座標を求める
 	char		*src;
 	long		color;
 	int			height;
+	t_vct_int	texture;	// テクスチャ内の描画する座標を求める
+
+	height = HEIGHT / 2 - ray->wall_height / 2 + i;
+	if (ray->hit_wall)
+	{
+		texture.x = (int)(data->textures[ray->wall_dir].width * (1
+					- ray->wall_hit_point));
+	}
+	else
+	{
+		texture.x = (int)(data->textures[ray->wall_dir].width
+				* ray->wall_hit_point);
+	}
+	texture.y = (int)(data->textures[ray->wall_dir].height * ((double)i
+				/ ray->wall_height));
+	src = data->textures[ray->wall_dir].image.addr + (texture.y
+			* data->textures[ray->wall_dir].image.line_size) + (texture.x
+			* (data->textures[ray->wall_dir].image.bits_per_pixel / 8));
+	color = *(unsigned int *)src;
+	*(unsigned int *)(data->graphic.image.addr + height
+			* data->graphic.image.line_size + width
+			* (data->graphic.image.bits_per_pixel / 8)) = color;
+}
+
+// 壁の一辺を描画する
+static void	ft_draw_line_of_wall(t_data *data, t_ray *ray, int width)
+{
+	int	i;
+	int	height;
 
 	i = 0;
 	while (i < ray->wall_height)
@@ -30,24 +56,7 @@ static void	ft_draw_line_of_wall(t_data *data, t_ray *ray, int width)
 			i++;
 			continue ;
 		}
-		if (ray->hit_wall)
-		{
-			texture.x = (int)(data->textures[ray->wall_dir].width * (1
-						- ray->wall_hit_point));
-		}
-		else
-		{
-			texture.x = (int)(data->textures[ray->wall_dir].width
-					* ray->wall_hit_point);
-		}
-		texture.y = (int)(data->textures[ray->wall_dir].height * ((double)i
-					/ ray->wall_height));
-		src = data->textures[ray->wall_dir].image.addr + (texture.y
-				* data->textures[ray->wall_dir].image.line_size) + (texture.x
-				* (data->textures[ray->wall_dir].image.bits_per_pixel / 8));
-		color = *(unsigned int *)src;
-		*(unsigned int *)(data->graphic.image.addr + height * data->graphic.image.line_size
-				+ width * (data->graphic.image.bits_per_pixel / 8)) = color;
+		ft_draw_line_of_wall_sub(data, ray, width, i);
 		i++;
 	}
 }
