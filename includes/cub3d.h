@@ -6,7 +6,7 @@
 /*   By: hurabe <hurabe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 17:59:42 by hurabe            #+#    #+#             */
-/*   Updated: 2025/03/03 17:04:15 by hurabe           ###   ########.fr       */
+/*   Updated: 2025/03/03 20:13:18 by hurabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,14 +50,12 @@
 # define CHECKED 'V'
 
 /*
-
 // debug printf
 #ifdef DEBUG
 # define PRINTF(fmt, ...) printf(fmt, ##__VA_ARGS__)
 #else
 # define PRINTF(fmt, ...)
 #endif
-
 */
 
 // minilibx-linux event

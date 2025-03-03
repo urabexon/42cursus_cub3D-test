@@ -6,13 +6,13 @@
 /*   By: hurabe <hurabe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/25 17:49:10 by hurabe            #+#    #+#             */
-/*   Updated: 2025/03/03 17:31:28 by hurabe           ###   ########.fr       */
+/*   Updated: 2025/03/03 20:52:28 by hurabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static void	free_data(t_data *data)
+static void	free_textures(t_data *data)
 {
 	int	i;
 
@@ -25,6 +25,11 @@ static void	free_data(t_data *data)
 			mlx_destroy_image(data->graphic.mlx, data->textures[i].image.img);
 		i++;
 	}
+}
+
+static void	free_data(t_data *data)
+{
+	free_textures(data);
 	if (data->file)
 		free_all(data->file);
 	if (data->map)

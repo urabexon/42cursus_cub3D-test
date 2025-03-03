@@ -6,7 +6,7 @@
 /*   By: hurabe <hurabe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 19:09:23 by hurabe            #+#    #+#             */
-/*   Updated: 2025/03/03 17:33:52 by hurabe           ###   ########.fr       */
+/*   Updated: 2025/03/03 20:02:04 by hurabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ static void	set_player_direction(t_player *player, char dir)
 		player->direction.y = 0;
 		player->direction.x = -1;
 	}
-
 }
 
 void	set_player_info(t_data *data, int y, int x, char **map)

@@ -6,7 +6,7 @@
 /*   By: hurabe <hurabe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 17:25:12 by kitaoryoma        #+#    #+#             */
-/*   Updated: 2025/03/03 17:26:05 by hurabe           ###   ########.fr       */
+/*   Updated: 2025/03/03 20:55:51 by hurabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,10 +90,6 @@ int	key_hook(int keycode, t_data *data)
 		data->player.position = old_position;
 	data->player.direction.x = cos(data->player.angle);
 	data->player.direction.y = sin(data->player.angle);
-	PRINTF("player position: %f, %f\n", data->player.position.x,
-		data->player.position.y);
-	PRINTF("player direction: %f, %f\n", data->player.direction.x,
-		data->player.direction.y);
 	ft_print_screen(data);
 	return (0);
 }
