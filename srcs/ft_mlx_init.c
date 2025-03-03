@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_mlx_init.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kitaoryoma <kitaoryoma@student.42.fr>      +#+  +:+       +#+        */
+/*   By: hurabe <hurabe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 10:13:37 by kitaoryoma        #+#    #+#             */
-/*   Updated: 2025/03/02 23:49:20 by kitaoryoma       ###   ########.fr       */
+/*   Updated: 2025/03/03 17:30:54 by hurabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ static void	ft_mlx_init_sub(t_data *data)
 			&data->graphic.minimap_img.endian);
 }
 
-// MLXの初期化、ウィンドウ作成
 void	ft_mlx_init(t_data *data)
 {
 	t_direction	dir;
@@ -37,7 +36,6 @@ void	ft_mlx_init(t_data *data)
 	data->graphic.mlx = mlx_init();
 	if (!data->graphic.mlx)
 		exit_error("mlx_init failed", data);
-	// テクスチャの読み出し
 	dir = NORTH;
 	while (dir < NONE)
 	{

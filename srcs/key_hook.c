@@ -3,16 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   key_hook.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kitaoryoma <kitaoryoma@student.42.fr>      +#+  +:+       +#+        */
+/*   By: hurabe <hurabe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 17:25:12 by kitaoryoma        #+#    #+#             */
-/*   Updated: 2025/03/02 23:51:31 by kitaoryoma       ###   ########.fr       */
+/*   Updated: 2025/03/03 17:26:05 by hurabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-// 座標が壁の中に入っている、もしくは班以外なら1を返す
 static int	is_in_wall(t_data *data, t_vector position)
 {
 	int	x;
@@ -28,7 +27,6 @@ static int	is_in_wall(t_data *data, t_vector position)
 	return (0);
 }
 
-// 壁との距離がPACE以内になったら1を返す
 static int	is_near_wall(t_data *data, t_vector position)
 {
 	t_vector	pos;
@@ -78,7 +76,6 @@ int	key_hook(int keycode, t_data *data)
 {
 	t_vector	old_position;
 
-	// 移動前の座標を保持
 	old_position = data->player.position;
 	if (keycode == ESC)
 		exit_game(data);
@@ -91,7 +88,6 @@ int	key_hook(int keycode, t_data *data)
 		data->show_minimap = !data->show_minimap;
 	if (is_near_wall(data, data->player.position))
 		data->player.position = old_position;
-	// 回転によって向きが変わったのでdirectionを再計算
 	data->player.direction.x = cos(data->player.angle);
 	data->player.direction.y = sin(data->player.angle);
 	PRINTF("player position: %f, %f\n", data->player.position.x,
