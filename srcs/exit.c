@@ -6,34 +6,33 @@
 /*   By: hurabe <hurabe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/25 17:49:10 by hurabe            #+#    #+#             */
-/*   Updated: 2025/03/03 20:52:28 by hurabe           ###   ########.fr       */
+/*   Updated: 2025/03/03 21:33:15 by hurabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static void	free_textures(t_data *data)
+// t_data解放用
+static void	free_data(t_data *data)
 {
 	int	i;
 
 	i = 0;
+	// 東西南北のテクスチャを解放する
 	while (i < 4)
 	{
 		if (data->texture_paths[i])
 			free(data->texture_paths[i]);
+		// 各テクスチャのmlx
 		if (data->textures[i].image.img)
 			mlx_destroy_image(data->graphic.mlx, data->textures[i].image.img);
 		i++;
 	}
-}
-
-static void	free_data(t_data *data)
-{
-	free_textures(data);
 	if (data->file)
 		free_all(data->file);
 	if (data->map)
 		free_all(data->map);
+	// mlx
 	if (data->graphic.image.img)
 		mlx_destroy_image(data->graphic.mlx, data->graphic.image.img);
 	if (data->graphic.minimap_img.img)
@@ -47,6 +46,7 @@ static void	free_data(t_data *data)
 	}
 }
 
+// エラーメッセージ用
 void	error_msg(char *message)
 {
 	if (message)
@@ -57,6 +57,7 @@ void	error_msg(char *message)
 	}
 }
 
+// エラーが発生したらfreeしてプログラム終了
 void	exit_error(char *message, t_data *data)
 {
 	free_data(data);
@@ -65,6 +66,7 @@ void	exit_error(char *message, t_data *data)
 	exit(EXIT_FAILURE);
 }
 
+// ゲームの正常終了用
 int	exit_game(t_data *data)
 {
 	free_data(data);

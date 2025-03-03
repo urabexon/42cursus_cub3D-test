@@ -6,12 +6,13 @@
 /*   By: hurabe <hurabe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/19 22:01:14 by hurabe            #+#    #+#             */
-/*   Updated: 2025/03/03 17:17:44 by hurabe           ###   ########.fr       */
+/*   Updated: 2025/03/03 21:35:38 by hurabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
+// 2次元配列のfree
 void	free_all(char **arr)
 {
 	size_t	i;
@@ -27,6 +28,7 @@ void	free_all(char **arr)
 	free(arr);
 }
 
+// 指定した文字が文字列's'に含まれているかをチェックする関数
 bool	is_include_char(char *s, int c)
 {
 	c = (char)c;
@@ -36,11 +38,14 @@ bool	is_include_char(char *s, int c)
 			return (true);
 		s++;
 	}
+	// 終端があるかチェック
 	if (c == '\0')
 		return (true);
 	return (false);
 }
 
+// str内のremoveに含まれる文字をreplaseに置き換える関数
+// removeは置換する文字のリスト（"\f\r\t\v"）
 void	replace_str(char *str, char *remove, char replace)
 {
 	int	i;
@@ -54,6 +59,7 @@ void	replace_str(char *str, char *remove, char replace)
 	}
 }
 
+// 2次元配列の要素数を取得する関数
 int	strarr_size(char **arr)
 {
 	int	i;
@@ -64,6 +70,8 @@ int	strarr_size(char **arr)
 	return (i);
 }
 
+// 文字列が特定の条件を満たしているかチェックする関数
+// 文字の条件を判定する関数ポインタ(ft_isdigitなど)
 bool	is_str_type(char *str, int (*function)(int))
 {
 	size_t	i;

@@ -6,7 +6,7 @@
 /*   By: hurabe <hurabe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/02 23:10:28 by kitaoryoma        #+#    #+#             */
-/*   Updated: 2025/03/03 17:32:10 by hurabe           ###   ########.fr       */
+/*   Updated: 2025/03/03 21:33:00 by hurabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static void	ft_draw_line_of_wall_sub(t_data *data, t_ray *ray, int width, int i)
 	char		*src;
 	long		color;
 	int			height;
-	t_vct_int	texture;
+	t_vct_int	texture;	// テクスチャ内の描画する座標を求める
 
 	height = HEIGHT / 2 - ray->wall_height / 2 + i;
 	if (ray->hit_wall)
@@ -41,6 +41,7 @@ static void	ft_draw_line_of_wall_sub(t_data *data, t_ray *ray, int width, int i)
 			* (data->graphic.image.bits_per_pixel / 8)) = color;
 }
 
+// 壁の一辺を描画する
 static void	ft_draw_line_of_wall(t_data *data, t_ray *ray, int width)
 {
 	int	i;
@@ -70,9 +71,11 @@ void	ft_draw_wall(t_data *data)
 	while (width < WIDTH)
 	{
 		ray = &data->rays[width];
+		// レイキャスティングのデータの初期化
 		ft_raycasting_init(data, ray, width);
 		ft_raycasting(data, ray);
 		ft_raycasting_result(data, ray);
+		// 壁の一辺を描画する
 		ft_draw_line_of_wall(data, ray, width);
 		width++;
 	}
